@@ -1,0 +1,281 @@
+{% extends 'AppBundle:default:layout.html.twig' %}
+{% block content %}
+	<div class="page2 pageGame" onClick="startGame();">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/') }}images/gImg1a.jpg" class="dImg dImg1" style="margin-top:-568px;">
+            <img src="{{ asset('bundles/app/default/') }}images/gImg4.jpg" class="dImg dImg2" style=" margin-top:-557px; display:none;">
+            <img src="{{ asset('bundles/app/default/') }}images/gImg3.jpg" class="dImg dImg3" style=" margin-top:-568px; display:none;">
+            <img src="{{ asset('bundles/app/default/') }}images/gImg2.jpg" class="dImg dImg4" style=" margin-top:-557px; display:none;">
+            <div class="noteBlock">
+            	<img src="{{ asset('bundles/app/default/') }}images/noteImg1.png" class="noteImg noteImg1" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/s1Note.png" class="noteImg s1Note" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/s2Note.png" class="noteImg s2Note" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/seNote.png" class="noteImg seNote" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/d1.png" class="noteImg d1" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/d2.png" class="noteImg d2" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/d3.png" class="noteImg d3" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/d4.png" class="noteImg d4" style="display:none;">
+            </div>
+            <img src="{{ asset('bundles/app/default/') }}images/endTxtA.png" class="abs endTxt" style="display:none;">
+            <div class="endBlock" style="display:none;">
+            	<img src="{{ asset('bundles/app/default/') }}images/endImg2.png" class="abs endImg2" style="display:none;">
+                <img src="{{ asset('bundles/app/default/') }}images/endImg1.png" class="abs endImg1">
+                <img src="{{ asset('bundles/app/default/') }}images/endTxt1.png" class="abs endTxt1" style="display:none;">
+                <a href="javascript:void(0);" onClick="clearF();" class="abs endBtn1" style="display:none;"><img src="{{ asset('bundles/app/default/') }}images/endBtn1.png"></a>
+                <a href="{{ url('_share',{t:'a'}) }}" class="abs endBtn2" style="display:none;"><img src="{{ asset('bundles/app/default/') }}images/endBtn2.png"></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block logo %}{% endblock %}
+{% block stylesheets %}
+    <style>
+        body{ background:url({{ asset('bundles/app/default/') }}images/bg.jpg) center top no-repeat;}
+        .endTxt{ left:80px; top:250px;}
+    </style>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+<script>
+var gameStep=1;
+var gameStepNumb=0;
+var isGaming=false;
+var noteShow=false;
+var noteShow2=false;
+var gameTime;
+var noteTime;
+
+window.onload=winOnload;
+function winOnload(){
+	noteTime=setTimeout(function(){startGame();},3000);
+	}
+
+function startGame(){
+	clearTimeout(noteTime);
+	if(!isGaming&&!noteShow){//开始提示
+		noteShow=true;
+		$('.s1Note').show();
+		noteTime=setTimeout(function(){startGame();},3000);
+		return;
+		}
+		else if(!isGaming&&!noteShow2){//展示教程
+			noteShow2=true;
+			$('.noteImg').hide();
+			$('.noteImg1').show();
+			noteTime=setTimeout(function(){
+				isGaming=true;
+				if(gameStep==1){
+				$(".pageGame").touchwipe({
+					min_move_x: 40, //横向灵敏度
+					min_move_y: 40, //纵向灵敏度
+					wipeLeft: function() {getD(1);}, //左侧滑动事件
+					wipeRight: function() {getD(3);}, //右侧滑动事件
+					wipeUp: function() {getD(2);}, //向上滑动事件
+					wipeDown: function() {getD(4);}, //向下滑动事件
+					preventDefaultEvents: true //阻止默认事件
+					});
+				}
+				gameGo();
+				
+				},3000);
+			return;
+			}
+			else if(!isGaming&&noteShow&&noteShow2){
+				isGaming=true;
+				if(gameStep==1){
+				$(".pageGame").touchwipe({
+					min_move_x: 40, //横向灵敏度
+					min_move_y: 40, //纵向灵敏度
+					wipeLeft: function() {getD(1);}, //左侧滑动事件
+					wipeRight: function() {getD(3);}, //右侧滑动事件
+					wipeUp: function() {getD(2);}, //向上滑动事件
+					wipeDown: function() {getD(4);}, //向下滑动事件
+					preventDefaultEvents: true //阻止默认事件
+					});
+				}
+				gameGo();
+				}
+	}
+
+var dFun=0;	
+function gameGo(){//游戏开始
+	clearTimeout(gameTime);
+	gameStepNumb++;
+	$('.endTxt').hide();
+	if(gameStep==1){//第一轮
+		if(gameStepNumb>6){//第一轮结束
+			$('.dImg').hide();
+			$('.dImg1').stop().show();
+			$('.endTxt').show();
+			isGaming=false;
+			noteShow=false;
+			noteShow2=false;
+			clearTimeout(gameTime);
+			canSwipe=false;
+			$('.dImg').hide();
+			$('.dImg1').stop().show();
+			$('.noteImg').hide();
+			setTimeout(function(){
+				goNextStep();
+				},1500);
+			return;
+			}
+		}
+		else if(gameStep==2){
+			if(gameStepNumb>8){//第二轮结束
+				$('.dImg').hide();
+				$('.dImg1').stop().show();
+				$('.endTxt').show();
+				isGaming=false;
+				noteShow=false;
+				noteShow2=false;
+				clearTimeout(gameTime);
+				canSwipe=false;
+				$('.dImg').hide();
+				$('.dImg1').stop().show();
+				$('.noteImg').hide();
+				setTimeout(function(){
+					goNextStep();
+					},1500);
+				return;
+				}
+				else{
+					if(gameStepNumb==4){
+						$('.endImg1').addClass('endImg1S1');
+						$('.endBlock').show();
+						}
+						else if(gameStepNumb==5){
+							$('.endImg1').removeClass('endImg1S1').addClass('endImg1S2');
+							$('.endBlock').show();
+							}
+							else if(gameStepNumb==6){
+								$('.endImg1').removeClass('endImg1S2').addClass('endImg1S3');
+								$('.endBlock').show();
+								}
+								else if(gameStepNumb==7){
+									$('.endImg1').removeClass('endImg1S3').addClass('endImg1S4');
+									$('.endBlock').show();
+									}
+									else if(gameStepNumb==8){
+										$('.endImg1').removeClass('endImg1S4');
+										$('.endBlock').show();
+										}
+					}
+			}
+	var ranD=parseInt(randomNumb(1,4));//1:左 2：上 3：右 4：下
+	dFun=ranD;
+	$('.noteImg').hide();
+	$('.d'+dFun).show();
+	gameTime=setTimeout(function(){noteKl();},2000);
+	canSwipe=true;
+	}
+	
+function noteKl(){//提示注意口令
+	clearTimeout(gameTime);
+	canSwipe=false;
+	$('.noteImg').hide();
+	  $('.seNote').show();
+	  setTimeout(function(){
+		  $('.noteImg').hide();
+		  $('.d'+dFun).show();
+		  gameTime=setTimeout(function(){noteKl();},2000);
+		  canSwipe=true;
+		  },1000);
+	}
+	
+var canSwipe=false;
+var nowDe=1;
+function getD(e){
+	if(canSwipe){
+		clearTimeout(gameTime);
+		canSwipe=false;
+		var de=parseInt(e);
+		if(de==dFun){//答对
+			if(dFun==1){//左切一图
+				var dImg=nowDe-1;
+				if(dImg<=0){
+					dImg=dImg+4;
+					}
+					nowDe=dImg;
+					$('.dImg').fadeOut(200).siblings('.dImg'+dImg).fadeIn(200);
+				}
+				else if(dFun==2){//立正动
+					}
+					else if(dFun==3){//右切一图
+						var dImg=nowDe+1;
+						if(dImg>4){
+							dImg=dImg-4;
+							}
+						nowDe=dImg;
+						$('.dImg').fadeOut(200).siblings('.dImg'+dImg).fadeIn(200);
+						}
+						else if(dFun==4){//左切二图
+							var dImg=nowDe-2;
+							if(dImg<=0){
+								dImg=dImg+4;
+								}
+							nowDe=dImg;
+							$('.dImg').fadeOut(200).siblings('.dImg'+dImg).fadeIn(200);
+							}
+			setTimeout(function(){gameGo()},250);
+			}
+			else{//答错
+				$('.noteImg').hide();
+				$('.seNote').show();
+				setTimeout(function(){
+					$('.noteImg').hide();
+					$('.d'+dFun).show();
+					gameTime=setTimeout(function(){noteKl();},2000);
+					canSwipe=true;
+					},1000);
+				}
+		}
+	}
+	
+function goNextStep(){
+	isGaming=false;
+	noteShow=false;
+	noteShow2=false;
+	clearTimeout(gameTime);
+	canSwipe=false;
+	$('.endTxt').hide();
+	$('.dImg').hide();
+	$('.dImg1').stop().show();
+	nowDe=1;
+	if(gameStep==1){
+		$('.dImg').hide()
+		$('.dImg1').stop().show();
+		gameStep++;//开始第二轮
+		gameStepNumb=0;
+		noteShow=true;
+		dFun=0;
+		$('.noteImg').hide();
+		$('.s2Note').show();
+		noteTime=setTimeout(function(){startGame();},3000);
+		return;
+		}
+		else{
+			clearTimeout(gameTime);
+			canSwipe=false;
+			$('.noteImg').hide();
+			gameOver();
+			}
+	}
+	
+function gameOver(){
+	$('.dImg').hide();
+	$('.dImg1').stop().show();
+	$('.endBlock img').show();
+	$('.endBlock a').show();
+	$('.noteBlock').fadeOut(500);
+	$('.endBlock').fadeIn(500);
+	}
+	
+function clearF(){
+	$('.endImg1').removeClass('endImg1S4').addClass('endImg1Act2');
+	setTimeout(function(){
+		window.location.href="{{ url('_share',{t:'a'}) }}";
+		},1500);
+	}
+</script>
+{% endblock %}

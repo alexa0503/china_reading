@@ -1,0 +1,62 @@
+{% extends 'AppBundle:default:layout.html.twig' %}
+{% block content %}
+	<div class="page page1">
+		<div class="innerDiv">
+			<img src="{{ asset('bundles/app/default/') }}images/indexImg1.png" class="abs indexImg1">
+			<img src="{{ asset('bundles/app/default/') }}images/indexImg2.png" class="abs indexImg2">
+			<img src="{{ asset('bundles/app/default/') }}images/indexImg3.png" class="abs indexImg3">
+			<div class="btnLine">
+				<a href="javascript:void(0);" onClick="goPage2();"><img src="{{ asset('bundles/app/default/') }}/images/indexBtn1.png"></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="page page2" style="display:none;">
+		<div class="innerDiv">
+			<img src="{{ asset('bundles/app/default/') }}images/indexImg4.png" class="abs indexImg4">
+			<a href="javascript:void(0);" class="abs selBtn selBtn1"><img src="{{ asset('bundles/app/default/') }}images/selBtn1.png"><img src="{{ asset('bundles/app/default/') }}images/selImg1.png" class="abs selImg selImg1"></a>
+			<a href="javascript:void(0);" class="abs selBtn selBtn2"><img src="{{ asset('bundles/app/default/') }}images/selBtn2.png"><img src="{{ asset('bundles/app/default/') }}images/selImg2.png" class="abs selImg selImg2"></a>
+			<a href="javascript:void(0);" class="abs selBtn selBtn3"><img src="{{ asset('bundles/app/default/') }}images/selBtn3.png"><img src="{{ asset('bundles/app/default/') }}images/selImg3.png" class="abs selImg selImg3"></a>
+			<div class="btnLine2">
+				<a href="javascript:void(0);" onClick="goGame();"><img src="{{ asset('bundles/app/default/') }}images/indexBtn2.png"></a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		function goPage2(){
+			$('.page1').fadeOut(500);
+			$('.page2').fadeIn(500);
+		}
+
+		$(document).ready(function(){
+			$('.page').css('margin-top',(-(1039-wHeight)/6-40)+'px');
+
+			$('.selBtn').click(function(){
+				$('.selBtn').removeClass('on');
+				$(this).addClass('on');
+			});
+		});
+
+		function goGame(){
+			var aIndex=$('.selBtn').index($('.on'));
+			if(aIndex<0){
+				alert('请选择教官');
+				return;
+			}
+			else{
+				if(aIndex==0){
+					window.location.href='{{ url("_game",{t:"a"}) }}';
+				}
+				else if(aIndex==1){
+					window.location.href='{{ url("_game",{t:"b"}) }}';
+				}
+				else if(aIndex==2){
+					window.location.href='{{ url("_game",{t:"c"}) }}';
+				}
+			}
+		}
+	</script>
+{% endblock %}

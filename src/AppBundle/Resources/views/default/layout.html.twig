@@ -1,0 +1,10 @@
+{% extends 'AppBundle:default:base.html.twig' %}
+{% block body %}
+	<div class="outDiv">
+          {% block content %}
+          {% endblock %}
+    </div>
+	{% block logo %}
+    		<img src="{{ asset('bundles/app/default/') }}images/logo.png" class="logo">
+    	{% endblock %}
+{% endblock %}
