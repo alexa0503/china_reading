@@ -21,9 +21,15 @@ class Info
     protected $username;
 
     /**
-     * @ORM\Column(name="address",type="string", length=120)
+     * @ORM\Column(name="email",type="string", length=120)
      */
-    protected $address;
+    protected $email;
+
+    
+    /**
+     * @ORM\Column(name="job",type="string", length=120)
+     */
+    protected $job;
 
     /**
      * @ORM\Column(name="mobile",type="string", length=200)
