@@ -43,7 +43,7 @@ class DefaultController extends Controller
 			$qb->setParameter('mobile', $request->get('mobile'));
 			$count = $qb->getQuery()->getSingleScalarResult();
 			if($count > 0){
-				$return['ret'] = 1004;
+				$return['ret'] = 1200;
 				$return['msg'] = '该手机号已经提交过信息啦';
 			}
 			elseif( null == $request->get('username')){
@@ -62,7 +62,7 @@ class DefaultController extends Controller
 				$return['ret'] = 1004;
 				$return['msg'] = '手机不能为空';
 			}
-			elseif ( !preg_match("/^1\d{10}$/", $mobile) ){
+			elseif ( !preg_match("/^1\d{10}$/", $request->get('mobile')) ){
 				$return['ret'] = 1005;
 				$return['msg'] = '手机不正确';
 			}
