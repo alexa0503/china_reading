@@ -27,4 +27,96 @@
 	<div id="Stage" class="EDGE-154820334">
 	</div>
 </body>
+
+<script type="text/javascript">
+		var phoneWidth =  parseInt(window.screen.width);
+		var phoneScale = phoneWidth/640;
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+
+
+
+
+var httpRequest = false;
+  
+   function createRequest( url, value )
+   {
+    httpRequest = false;
+   
+    if( window.XMLHttpRequest )
+    {
+     httpRequest = new XMLHttpRequest();
+     if( httpRequest.overrideMimeType )
+     {
+      httpRequest.overrideMimeType( "text/xml" );
+     }
+    }
+    else if( window.ActiveXObject )
+    {
+     try
+     {
+      httpRequest = new ActiveXObject( "Msxml2.XMLHTTP" );
+     }
+     catch( e )
+     {
+      try
+      {
+       httpRequest = new ActiveXObject( "Microsoft.XMLHTTP" );
+      }
+      catch( e )
+      {
+      }
+     }
+    }
+   
+    if( !httpRequest )
+    {
+     alert( 'Can\'t create XMLHTTP instance' );
+     return false;
+    }
+   
+    httpRequest.onreadystatechange = alertContents;    // 立即执行数据回收
+    httpRequest.open( "POST", url, true );
+    // POST 方法必须有的函数1 => 传输数据需要用setRequestHeader() 来添加 HTTP 头
+    httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ // post 方法必须有的函数2 => 传值的方法 .send( 'name=value' );
+    httpRequest.send( 'data='+value );  
+   }
+  
+   function alertContents()
+   {
+    if( httpRequest.readyState == 4 )
+    {
+     if( httpRequest.status == 200 )
+     {
+      // 去http的返回值, 也就是post.php中echo出的值
+      document.getElementByIdx_x_x_x( 'sub' ).value = httpRequest.responseText;
+     }
+     else
+     {
+      alert( 'Page error' );
+     }
+    }
+   }
+ 
+   function chg()
+   {
+    var value = document.getElementByIdx_x_x_x( 'sel' ).value;
+    if( '' != value )
+    {
+     //alert( value );
+     createRequest( './post.php', value );
+    }
+   }
+
+</script>
 </html>
