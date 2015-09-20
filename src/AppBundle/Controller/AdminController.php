@@ -26,11 +26,11 @@ class AdminController extends Controller
         return $this->render('AppBundle:admin:index.html.twig');
     }
     /**
-     * @Route("/admin/form/", name="admin_form")
+     * @Route("/admin/info/", name="admin_info")
      */
     public function formAction(Request $request)
     {
-            $repository = $this->getDoctrine()->getRepository('AppBundle:Form');
+            $repository = $this->getDoctrine()->getRepository('AppBundle:Info');
         $queryBuilder = $repository->createQueryBuilder('a');
         $queryBuilder->orderBy('a.createTime', 'DESC');
         $query = $queryBuilder->getQuery();
@@ -44,48 +44,22 @@ class AdminController extends Controller
         return $this->render('AppBundle:admin:form.html.twig', array('pagination'=>$pagination));
     }
     /**
-     * @Route("/admin/user/", name="admin_user")
-     */
-    public function wechatUserAction(Request $request)
-    {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:WechatUser');
-        $queryBuilder = $repository->createQueryBuilder('a');
-        $queryBuilder->orderBy('a.createTime', 'DESC');
-        $query = $queryBuilder->getQuery();
-        $paginator  = $this->get('knp_paginator');
-
-        $pagination = $paginator->paginate(
-            $query,
-            $request->query->get('page', 1),/*page number*/
-            $this->pageSize
-        );
-        return $this->render('AppBundle:admin:wechatUser.html.twig', array('pagination'=>$pagination));
-
-    }
-    /**
      * @Route("/admin/export/", name="admin_export")
      */
     public function exportAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('AppBundle:LotteryLog');
-        $queryBuilder = $repository->createQueryBuilder('a')
-            ->leftjoin('a.lottery','b')
-            ->leftjoin('b.prize','c');
-        $queryBuilder->where('c.id != 5');
+        $repository = $em->getRepository('AppBundle:Info');
+        $queryBuilder = $repository->createQueryBuilder('a');
         $queryBuilder->orderBy('a.createTime', 'DESC');
         $logs = $queryBuilder->getQuery()->getResult();
         //$output = '';
         $arr = array(
-            'id,奖项,姓名,手机,地址,抽奖时间,抽奖IP'
+            'id,用户名,Email,手机,职务,时间,IP'
         );
         foreach($logs as $v){
-            $member = $em->getRepository('AppBundle:Member')->findOneBySessionId($v->getSessionId());
-            $_string = $v->getId().','.$v->getLottery()->getPrize()->getTitle().',';
-            if( isset($member))
-                $_string .= $member->getName().','.$member->getTel().','.$member->getAddress().',';
-            else
-                $_string .= '-,-,-,';
+            $_string = $v->getId();
+            $_string .= $v->getUsername().','.$v->getMobile().','.$member->getJob().',';
             $_string .= $v->getCreateTime()->format('Y-m-d H:i:s').','.$v->getCreateIp().',';
             $arr[] = $_string;
         }

@@ -19,8 +19,8 @@ class Builder extends ContainerAware
         $menu->setChildrenAttribute('id', 'leftmenu');
 
         $menu->addChild('Dashboard', array('route' => 'admin_index'));
-        $menu->addChild('creation', array('route' => 'admin_form', 'label' => '表单信息'));
-        $menu->addChild('user', array('route' => 'admin_user', 'label' => '授权用户'));
+        $menu->addChild('info', array('route' => 'admin_info', 'label' => '表单信息'));
+        $menu->addChild('user', array('route' => 'admin_export', 'label' => '导出信息'));
         /*
         $catalog_log = $menu->addChild('lotteryLog', array('route' => 'admin_log', 'label' => '中奖记录'));
         $catalog_log->setAttribute('class', 'nav-parent');
