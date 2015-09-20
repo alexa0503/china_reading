@@ -1,0 +1,141 @@
+/* Global Setting */
+body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'Microsoft YaHei',Arial; background:url(../images/bg.jpg) center top fixed no-repeat #63cae1;}
+table{border-collapse:collapse;}
+td,th{padding:0;}
+ul,li,dd,dl,dt{margin:0; padding:0; list-style:none; word-break:break-all;}
+img{border:0;}
+p{margin:0; word-break:break-all;}
+h1,h2,h3,h4{margin:0;padding:0; font-weight:normal; font-size:14px;}
+em{ font-size:12px; font-style:normal;}
+hr{background:none;border:none;border-bottom:1px solid #CCC;#border-bottom:0;}
+.clear {clear:both;height:0;font-size:1px;line-height: 0px;}
+a{text-decoration:none; border:0; outline:none; blr:expression(this.onFocus=this.blur());}
+select,input,textarea{font-family:inherit; outline:none;}
+
+.wrapper{ width:640px; margin:0 auto; border:none; padding:0;}
+.innerDiv{ width:100%; height:100%; position:relative;}
+.abs{ position:absolute;}
+
+.step1{ padding-top:50px; width:100%; background:url(../images/s1Img2.png) 0 50px no-repeat; height:640px; padding-bottom:120px;}
+.infoTxt{ width:488px; height:49px; line-height:48px; color:#FFF; font-size:26px; background:none; border:none; padding:0 20px; position:absolute; left:57px; -webkit-appearance:none; -moz-appearance:none;}
+.infoTxt1{ top:0;}
+.infoTxt2{ top:59px;}
+.infoTxt3{ top:118px;}
+.infoTxt4{ top:177px;}
+.infoTxtArea{ width:488px; height:114px; line-height:48px; color:#FFF; font-size:26px; background:none; border:none; padding:0 20px; position:absolute; left:57px; top:236px; resize:none; margin:0;}
+.s1Btn1{ position:absolute; left:252px; top:595px;}
+.clickImg{ position:absolute; left:460px; top:477px; background:none; border:none; display:block; width:111px; height:32px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity:0; opacity:0;}
+.selRuleBtn{ display:block; width:28px; height:20px; background:url(../images/ruleCopy.png) 0 -20px no-repeat; position:absolute; left:65px; top:542px;}
+.selRuleBtnOn{ background-position:0 0;}
+.ruleBtn{ display:block; width:308px; height:20px; background:url(../images/ruleCopy.png) -28px -20px no-repeat; position:absolute; left:93px; top:542px;}
+.s1Btn3{ left:460px; top:477px;}
+.preImg{ width:528px; height:353px; overflow:hidden; position:absolute; left:58px; top:177px;/* text-align:center;*/}
+/*.preImg img{ display:inline; height:100%;}*/
+
+.bottomBtnLine{ width:640px; height:109px; position:fixed; left:50%; bottom:0; margin-left:-320px;}
+.bottomBtnLine a{ float:left;}
+.bottomBtnLine a img{ display:block;}
+
+.popBg{ width:100%; height:100%; position:fixed; left:0; top:0; background:#000; filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8;}
+.pop{ position:fixed; left:50%; top:50%;}
+.popLoading{ margin:-30px 0 0 -30px;}
+
+
+.loadingPage{ background:url(../images/indexImg.jpg) 0 0 no-repeat; width:640px; height:1136px; position:absolute; left:50%; top:0; margin-left:-320px;}
+.indexLogoAct{
+-webkit-animation:littleUpShow 2s 1s ease both;
+-moz-animation:littleUpShow 2s 1s ease both;
+}
+@-webkit-keyframes littleUpShow{
+0%{ -webkit-transform:translate(0,150px); filter:alpha(opacity=0); -webkit-opacity:0; opacity:0;}
+100%{ -webkit-transform:translate(0,0); filter:alpha(opacity=100); -webkit-opacity:1; opacity:1;}
+}
+@-moz-keyframes littleUpShow{
+0%{ -moz-transform:translate(0,150px); filter:alpha(opacity=0); -webkit-opacity:0; opacity:0;}
+100%{ -moz-transform:translate(0,0); filter:alpha(opacity=100); -webkit-opacity:1; opacity:1;}
+}
+
+.indexNote{ left:50%; margin-left:-320px; top:800px;}
+
+.indexPage{ position:absolute; left:50%; top:0; margin-left:-320px; background:url(../images/indexBg2.jpg) 0 0 no-repeat; width:640px;}
+.indexLogo2{ padding-bottom:20px;}
+.indexNote2{ padding-bottom:20px;}
+.indexSel{ padding-bottom:40px; width:528px; position:relative; margin:0 auto;}
+
+.indexSelBtn2{ color:#FFF; font-size:26px; background:#2e2e2e; text-align:right; width:488px; display:block; padding:5px 20px 10px 20px; border-radius:0 0 20px 20px; border:none; margin-top:-2px;}
+.indexSel .indexSelBtn2 img{ vertical-align:-4px;}
+.indexSel .indexSelBtn2 span{ padding-left:20px;}
+
+.indexSel .indexSelBtn{ position:absolute; bottom:90px; right:30px; color:#FFF; font-size:26px;}
+.indexSel .indexSelBtn img{ vertical-align:-4px;}
+.indexSel .indexSelBtn span{ padding-left:20px;}
+
+.popRule{ width:640px; height:832px; margin-left:-320px; margin-top:-416px;}
+.ruleMain{ width:640px; height:832px; overflow-x:hidden; overflow-y:auto;}
+.ruleMain h2{ font-size:30px; text-align:center; color:#FFF;}
+.ruleMain p{ padding:40px 30px 0 30px; font-size:20px; line-height:28px; color:#FFF;}
+.closeBtn{ position:fixed; top:20px; right:20px;}
+
+.step2{ padding-top:30px; padding-bottom:120px;}
+.s2Main{ width:535px; margin:0 auto;}
+.s2TopImg{ width:535px; height:365px; overflow:hidden; border-radius:20px 20px 0 0; background:#FFF; text-align:center;}
+.s2TopImg img{ display:inline; height:100%;}
+.infoLine{ background:#e1dfdf; padding:5px 15px;}
+.infoLine .face{ float:left; width:75px; height:75px; padding-right:10px;}
+.infoLine .face img{ border-radius:50%; width:75px; height:75px;}
+.infoLine .name{ float:left; font-size:30px; color:#000; padding-top:20px; width:410px; height:50px; overflow:hidden;}
+.infoLine .name span{ font-size:20px; color:#7d7d7d; padding-left:10px;}
+.mddLine{ background:#2e2e2e; border-radius:0 0 20px 20px; padding:10px 15px;}
+.mddLine .mmdTopLine{ font-size:30px; color:#FFF; padding:0 0 10px 0; height:35px; width:100%; overflow:hidden;}
+.mddLine .myWish{ color:#FFF; font-size:22px; line-height:30px;}
+.likeLine{ text-align:right; font-size:26px;}
+.likeLine .indexSelBtn{ color:#FFF; font-size:26px;}
+.likeLine .indexSelBtn img{ vertical-align:-4px;}
+.likeLine .indexSelBtn span{ padding-left:20px;}
+.btnLine{ padding:40px 0 0 0; text-align:center;}
+.btnLine a{ margin:0 15px;}
+
+.listNote{ padding-top:20px;}
+.list{ padding-top:20px; padding-bottom:120px;}
+.ListMain{ width:560px; height:650px; overflow-x:hidden; overflow-y:auto; margin:0 auto; border-radius:20px; background:#2e2e2e; padding:20px;}
+.listItem{ float:left; width:260px; margin:0 10px 20px 10px;}
+.listItem .listItemTopImg{ width:260px; height:191px; overflow:hidden; border-radius:20px 20px 0 0; background:#FFF; text-align:center;}
+.listItem .listItemTopImg img{ display:inline; height:100%;}
+.listItem .listItemInfoLine{ background:#e1dfdf; width:250px; padding:5px 5px;}
+.listItem .listItemInfoLine .name{ width:65px; height:34px; font-size:20px; line-height:34px; overflow:hidden; float:left;}
+.listItem .listItemInfoLine .mmd{ width:120px; padding-left:0; height:34px; font-size:16px; line-height:34px; overflow:hidden; float:left;}
+.listItem .listItemInfoLine .like{ width:65px; height:34px; font-size:16px; line-height:34px; overflow:hidden; float:left; text-align:right;}
+.listItem .listItemInfoLine .like img{ vertical-align:0;}
+.listItem .listItemInfoLine .like span{ padding-left:5px; color:#000;}
+
+.awardList{ padding-top:30px; padding-bottom:120px;}
+.awardListMain{ width:560px; height:650px; margin:0 auto; border-radius:20px; background:#2e2e2e; padding:20px;}
+.awardItemList{ width:560px; height:450px; overflow-x:hidden; overflow-y:auto;}
+.awardListMain h1{ padding:0 0 50px 0; text-align:center; color:#FFF; font-size:30px;}
+.unGetAward{ font-size:22px; color:#fff; text-align:center;}
+.awardItemList .awardItem{ width:100%; color:#FFF; font-size:22px;}
+.awardItemList .ed{ color:#7f8080;}
+.awardItemList .awardItem .dl{ float:left; width:260px; height:40px; line-height:40px;}
+.awardItemList .awardItem .dm{ float:left; width:200px; height:40px; line-height:40px; text-align:center;}
+.awardItemList .awardItem .dr{ float:left; width:100px; height:40px; line-height:40px; text-align:center;}
+.awardBtnLine{ text-align:center; padding-top:40px;}
+
+.awardInfoTitle{ font-size:30px; padding:90px 0 60px 0; color:#FFF; text-align:center;}
+.awardInfo{ background:url(../images/awardInfoImg1.png) 0 0 no-repeat; height:170px; position:relative;}
+.awardInfoTxt1{ top:0;}
+.awardInfoTxt2{ top:59px;}
+.awardInfoTxt3{ top:118px;}
+.awardInfoBtnLine{ text-align:center; padding-top:300px; padding-bottom:120px;}
+
+.awardNote{ background:#2e2e2e; width:500px; margin:120px auto 20px auto; padding:10px 25px;}
+.awardNote h2{ font-size:26px; color:#FFF; text-align:center; padding:0 0 10px 0; line-height:100%;}
+.awardNote .pTitle{ font-size:30px; color:#FFF; text-align:center; padding:15px 0 40px 0; line-height:100%;}
+.awardNote .pInfo{ font-size:18px; color:#FFF; text-align:center; padding:0; line-height:28px;}
+.anBtnLine{ padding:0; text-align:center;}
+.qcLine{ text-align:center; padding:30px 0 120px 0;}
+.qcLine2{ text-align:center; padding:140px 0 120px 0;}
+
+.popShare{ position:fixed; top:20px; right:10px; left:auto;}
+
+.indexWish{ width:508px; padding:10px; color:#FFF; font-size:20px; line-height:26px; background:#2e2e2e; border:none; margin-top:-2px;}
+.dspb{ display:block;}

@@ -52,14 +52,14 @@ class AdminController extends Controller
         $repository = $em->getRepository('AppBundle:Info');
         $queryBuilder = $repository->createQueryBuilder('a');
         $queryBuilder->orderBy('a.createTime', 'DESC');
-        $logs = $queryBuilder->getQuery()->getResult();
+        $infos = $queryBuilder->getQuery()->getResult();
         //$output = '';
         $arr = array(
             'id,用户名,Email,手机,职务,时间,IP'
         );
-        foreach($logs as $v){
+        foreach($infos as $v){
             $_string = $v->getId();
-            $_string .= $v->getUsername().','.$v->getMobile().','.$member->getJob().',';
+            $_string .= $v->getUsername().','.$v->getMobile().','.$v->getJob().',';
             $_string .= $v->getCreateTime()->format('Y-m-d H:i:s').','.$v->getCreateIp().',';
             $arr[] = $_string;
         }
