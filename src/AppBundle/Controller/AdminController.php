@@ -58,7 +58,7 @@ class AdminController extends Controller
             'id,用户名,Email,手机,职务,时间,IP'
         );
         foreach($infos as $v){
-            $_string = $v->getId();
+            $_string = $v->getId().',';
             $_string .= $v->getUsername().','.$v->getMobile().','.$v->getJob().',';
             $_string .= $v->getCreateTime()->format('Y-m-d H:i:s').','.$v->getCreateIp().',';
             $arr[] = $_string;
