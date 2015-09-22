@@ -34,7 +34,7 @@ class DefaultController extends Controller
 			'msg' => '',
 			);
 		$session = $request->getSession();
-		if( null == $request->get('callback')){
+		if( null != $request->get('callback')){
 			$callback = $request->get('callback');
 			$em = $this->getDoctrine()->getEntityManager();
 			$repo = $em->getRepository('AppBundle:Info');
