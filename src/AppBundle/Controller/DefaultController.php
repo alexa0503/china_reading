@@ -83,7 +83,7 @@ class DefaultController extends Controller
 				$em->flush();
 				$officer = $session->get('officer');
 			}
-			return new Response($callback.'("'.json_encode($return).'")');
+			return new Response($callback.'('.json_encode($return).')');
 		}
 		else{
 			$return['ret'] = 1100;
